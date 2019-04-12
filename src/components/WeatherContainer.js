@@ -15,9 +15,14 @@ class WeatherContainer extends Component {
   render() {
     const { geoData, weatherData } = this.props;
 
-    //If no Geodata is present load the 'loading' spinner while we wait for the lcaotion data
+    //If no Geodata is present load the 'loading' spinner while we wait for the location data
     if (!geoData.lat) {
-      return <div className="loader">Loading</div>;
+      return (
+        <div>
+        <p> Waiting for location</p>
+          <div className="loader">Loading</div>
+        </div>
+      );
     }
     //If Geodata is present but no weather data dipslay the button so they can fetch the weather.
     if (!weatherData.main) {
@@ -25,7 +30,7 @@ class WeatherContainer extends Component {
         <div>
           <h2> Click the button below to check the weather </h2>
           <button type="button" onClick={this.handleClick}>
-            Fetch Weather
+           Current Weather
           </button>
         </div>
       );
